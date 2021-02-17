@@ -10,7 +10,7 @@ export const PageWrapper = styled.div`
 
 export const FormWrapper = styled.div`
   min-height: 80vh;
-  width: 30%;
+  width: 42rem;
   position: absolute;
   top: 50%;
   left: 50%;
