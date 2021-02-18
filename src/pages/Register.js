@@ -74,6 +74,7 @@ const RegisterPage = ({ loginUser }) => {
       }
     })();
   };
+
   return (
     <PageWrapper>
       <FormWrapper>

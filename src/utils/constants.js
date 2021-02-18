@@ -11,3 +11,6 @@ if (
 
 //Register user - POST
 export const REGISTER_USER = `${path}/user/register`;
+
+//Login user - POST
+export const LOGIN_USER = `${path}/user/login`;

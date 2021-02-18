@@ -1,5 +1,13 @@
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import axios from "axios";
+
+import { LOGIN_USER } from "../utils/constants";
+import { loginUser } from "../actions/auth";
+import setAuthToken from "../utils/setAuthToken";
+import persistAuthData from "../utils/persistAuthData";
 
 import {
   PageWrapper,
@@ -29,7 +37,40 @@ const ForgotPassword = styled(Link)`
   color: #312aaa;
 `;
 
-const LoginPage = () => {
+const LoginPage = ({ loginUser }) => {
+  const [formState, setFormState] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleOnChange = ({ target }) => {
+    console.log("handling");
+    setFormState({ ...formState, [target.name]: target.value });
+  };
+
+  const startUserLogin = () => {
+    setLoading(true);
+
+    (async function login() {
+      try {
+        const res = await axios.post(LOGIN_USER, formState);
+        const data = res.data.data;
+        const token = res.data.data.token;
+        const user = res.data.data.user;
+
+        persistAuthData(data);
+        setAuthToken(token);
+        loginUser(user);
+      } catch (e) {
+        console.log(e.response.data.message);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  };
+
   return (
     <PageWrapper>
       <FormWrapper>
@@ -41,17 +82,35 @@ const LoginPage = () => {
           <LoginAltLogo src={google} alt="" />
           <LoginAltText>Sign in with Google</LoginAltText>
         </LoginAlt>
-        <Form>
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault();
+
+            startUserLogin();
+          }}
+        >
           <FormGroup>
             <Label>Email or Username</Label>
-            <Input type="text" autoComplete="new-password" />
+            <Input
+              type="text"
+              autoComplete="new-password"
+              name="email"
+              value={formState.email}
+              onChange={handleOnChange}
+            />
           </FormGroup>
           <FormGroup>
             <Label>Password</Label>
-            <Input type="password" autoComplete="new-password" />
+            <Input
+              type="password"
+              name="password"
+              value={formState.password}
+              onChange={handleOnChange}
+              autoComplete="new-password"
+            />
           </FormGroup>
           <ForgotPassword to="forgot-password">Forgot password?</ForgotPassword>
-          <Submit>Submit</Submit>
+          <Submit>{loading ? "Loading..." : "Submit"}</Submit>
           <RegisterLink to="/register">Not registered? Register</RegisterLink>
         </Form>
       </FormWrapper>
@@ -59,4 +118,10 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginUser: (payload) => dispatch(loginUser(payload)),
+  };
+};
+
+export default connect(undefined, mapDispatchToProps)(LoginPage);
