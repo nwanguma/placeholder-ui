@@ -6,13 +6,14 @@ import axios from "axios";
 
 import { REGISTER_USER } from "../utils/constants";
 import { loginUser } from "../actions/auth";
-import setAuthToken from "../utils/setAuthToken.js";
+import setAuthToken from "../utils/setAuthToken";
+import persistAuthData from "../utils/persistAuthData";
 
 import {
   PageWrapper,
   FormWrapper,
   FormDetails,
-  // FormDetailsLogo,
+  FormDetailsLogo,
   FormDetailsTitle,
   LoginAlt,
   LoginAltLogo,
@@ -25,7 +26,7 @@ import {
   RegisterLink,
 } from "../components/styled/onboarding";
 
-// import logo from "../assets/images/logo.svg";
+import logo from "../assets/images/logo.png";
 import google from "../assets/images/google.svg";
 
 const RegisterForm = styled(Form)`
@@ -59,11 +60,13 @@ const RegisterPage = ({ loginUser }) => {
     (async function startUserRegistration() {
       try {
         const res = await axios.post(REGISTER_USER, formState);
-        const data = res.data.data.user;
+        const data = res.data.data;
         const token = res.data.data.token;
+        const user = res.data.data.user;
 
+        persistAuthData(data);
         setAuthToken(token);
-        loginUser(data);
+        loginUser(user);
       } catch (e) {
         console.log(e.response.data.message);
       } finally {
@@ -75,7 +78,7 @@ const RegisterPage = ({ loginUser }) => {
     <PageWrapper>
       <FormWrapper>
         <FormDetails>
-          {/* <FormDetailsLogo src={logo} alt="" /> */}
+          <FormDetailsLogo src={logo} alt="" />
           <FormDetailsTitle>Register for your free account</FormDetailsTitle>
         </FormDetails>
         <LoginAlt href="#">
@@ -90,20 +93,20 @@ const RegisterPage = ({ loginUser }) => {
           }}
         >
           <FormGroup>
-            <Label>Username</Label>
+            <Label>Email</Label>
             <Input
-              name="username"
-              value={formState.username}
+              name="email"
+              value={formState.email}
               type="text"
               autoComplete="new-password"
               onChange={handleOnChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label>Email</Label>
+            <Label>Username</Label>
             <Input
-              name="email"
-              value={formState.email}
+              name="username"
+              value={formState.username}
               type="text"
               autoComplete="new-password"
               onChange={handleOnChange}

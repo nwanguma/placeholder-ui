@@ -47,11 +47,13 @@ const NavListItemLink = styled(NavLink)`
 `;
 
 const navigationItems = [
-  { title: "Home", path: "/dashboard", exact: true },
-  { title: "Promotions", path: "/dashboard/promotions" },
-  { title: "Bounties", path: "/dashboard/bounties" },
-  { title: "Product of the week", path: "/dashboard/product-of-the-week" },
-  { title: "Earnings", path: "/dashboard/earnings" },
+  { title: "Home", path: "/app", exact: true },
+  { title: "Challenges", path: "/app/challenges" },
+  { title: "Bounties", path: "/app/bounties" },
+  { title: "Blog", path: "/blog" },
+  { title: "Product of the week", path: "/product-spotlight" },
+  { title: "Profile", path: "/app/profile" },
+  { title: "Settings", path: "/app/settings" },
 ];
 
 const LandingPageNavigation = () => {
@@ -72,16 +74,6 @@ const LandingPageNavigation = () => {
             </NavListItemLink>
           </NavListItem>
         ))}
-        <NavListItem>
-          <NavListItemLink to="/dashboard/settings" activeClassName="active">
-            Settings
-          </NavListItemLink>
-        </NavListItem>
-        <NavListItem>
-          <NavListItemLink to="/dashboard/account" activeClassName="active">
-            Account
-          </NavListItemLink>
-        </NavListItem>
       </NavList>
     </Nav>
   );

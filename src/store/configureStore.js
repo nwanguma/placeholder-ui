@@ -1,6 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
-import testReducer from "../reducers/test";
 import authReducer from "../reducers/auth";
 
 export default function configureStore(preloadedState) {
@@ -9,7 +8,6 @@ export default function configureStore(preloadedState) {
 
   const store = createStore(
     combineReducers({
-      test: testReducer,
       auth: authReducer,
     }),
     preloadedState,

@@ -1,27 +1,28 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import PrivateRoute from "../utils/privateRoute";
+import PublicRoute from "../utils/PublicRoute";
+
 // import Home from "../pages/landing/Home";
-import Promotions from "../pages/landing/Promotions";
 import About from "../pages/landing/About";
-import Product from "../pages/landing/Product";
-import Pricing from "../pages/landing/Pricing";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Dashboard from "../features/dashboard/index";
+import Tour from "../pages/Tour";
+import App from "../features/app/index";
+import ProductSpotlight from "../features/productSpotlight/index";
 
 const AppRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-        <Route path="/pricing" component={Pricing} />
-        <Route path="/promotions" component={Promotions} />
-        <Route path="/about" component={About} />
-        <Route path="/product" component={Product} />
-        <Route path="/*" component={Login} />
-        <Route path="/" exact component={Login} />
+        <PrivateRoute path="/app" component={App} />
+        <PublicRoute path="/login" component={Login} />
+        <PublicRoute path="/register" component={Register} />
+        <PublicRoute path="/tour" component={Tour} />
+        <Route path="/blog" component={About} />
+        <Route path="/product-spotlight" component={ProductSpotlight} />
+        <PublicRoute path="/*" component={Login} />
+        <PublicRoute path="/" exact component={Login} />
       </Switch>
     </Router>
   );
