@@ -2,6 +2,7 @@ import Overview from "../features/overview/index";
 import Challenges from "../features/challenges/index";
 import Profile from "../features/profile/index";
 import Bounties from "../features/bounties/index";
+import Jobs from "../features/jobs/index";
 import Settings from "../features/settings/index";
 import ProductSpotlight from "../features/productSpotlight/index";
 import Blog from "../features/blog/index";
@@ -26,6 +27,12 @@ const routes = [
     component: Bounties,
   },
   {
+    title: "jobs",
+    path: "/app/jobs",
+    exact: true,
+    component: Jobs,
+  },
+  {
     title: "profile",
     path: "/app/profile",
     exact: true,
@@ -37,18 +44,18 @@ const routes = [
     exact: true,
     component: Settings,
   },
-  // {
-  //   title: "blog",
-  //   path: "/app/blog",
-  //   exact: true,
-  //   component: Blog,
-  // },
-  // {
-  //   title: "spotlight",
-  //   path: "/app/spotlight",
-  //   exact: true,
-  //   component: ProductSpotlight,
-  // },
+  {
+    title: "blog",
+    path: "/app/blog",
+    exact: true,
+    component: Blog,
+  },
+  {
+    title: "spotlight",
+    path: "/app/product-spotlight",
+    exact: true,
+    component: ProductSpotlight,
+  },
   {
     title: "app",
     path: "/app",

@@ -357,18 +357,7 @@ const OverviewPage = () => {
           </SectionSpotlightContentText>
         </SectionSpotlightContent>
         <SectionSpotlightCarousel>
-          <Carousel>
-            <div>
-              <img src={meerkat} alt="" />
-              {/* <p className="legend">Legend 1</p> */}
-            </div>
-            <div>
-              <img src={meerkat} alt="" />
-            </div>
-            <div>
-              <img src={meerkat} alt="" />
-            </div>
-          </Carousel>
+          The carousel probably lives here
         </SectionSpotlightCarousel>
       </SectionSpotlight>
       <SectionEarnings>

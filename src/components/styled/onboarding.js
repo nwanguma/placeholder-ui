@@ -32,11 +32,12 @@ export const FormDetails = styled.div`
 `;
 
 export const FormDetailsLogo = styled.img`
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 0.5rem;
   display: inline-block;
-  margin-right: 1rem;
+  margin-right: 0.3rem;
+  vertical-align: middle;
 `;
 
 export const FormDetailsTitle = styled.h3`
@@ -111,6 +112,7 @@ export const Submit = styled.button`
   color: #fff;
   font-weight: 600;
   margin: 2rem 0;
+  cursor: pointer;
 `;
 
 export const RegisterLink = styled(Link)`

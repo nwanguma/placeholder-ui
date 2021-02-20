@@ -26,7 +26,7 @@ import {
   RegisterLink,
 } from "../components/styled/onboarding";
 
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo-alt.svg";
 import google from "../assets/images/google.svg";
 
 const ForgotPassword = styled(Link)`
@@ -39,14 +39,12 @@ const ForgotPassword = styled(Link)`
 
 const LoginPage = ({ loginUser }) => {
   const [formState, setFormState] = useState({
-    username: "",
-    email: "",
+    id: "",
     password: "",
   });
   const [loading, setLoading] = useState(false);
 
   const handleOnChange = ({ target }) => {
-    console.log("handling");
     setFormState({ ...formState, [target.name]: target.value });
   };
 
@@ -64,7 +62,7 @@ const LoginPage = ({ loginUser }) => {
         setAuthToken(token);
         loginUser(user);
       } catch (e) {
-        console.log(e.response.data.message);
+        // console.log(e.response.data.message);
       } finally {
         setLoading(false);
       }
@@ -94,8 +92,8 @@ const LoginPage = ({ loginUser }) => {
             <Input
               type="text"
               autoComplete="new-password"
-              name="email"
-              value={formState.email}
+              name="id"
+              value={formState.id}
               onChange={handleOnChange}
             />
           </FormGroup>

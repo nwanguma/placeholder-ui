@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import Navigation from "../../components/layout/AppNavigation";
 import Footer from "../../components/layout/AppFooter";
 import routes from "../../routes/app";
+import ModalComponent from "../../components/layout/Modal";
 
 const AppMainWrapper = styled.div`
   background-color: #ebecff;
@@ -25,25 +26,28 @@ const ContentWrapper = styled.div`
 
 const App = () => {
   return (
-    <AppMainWrapper>
-      <AppContentWrapper>
-        <Navigation />
-        <ContentWrapper>
-          <Switch>
-            {routes.map((route) => {
-              return (
-                <Route
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
-              );
-            })}
-          </Switch>
-        </ContentWrapper>
-        <Footer />
-      </AppContentWrapper>
-    </AppMainWrapper>
+    <>
+      <AppMainWrapper>
+        <AppContentWrapper>
+          <Navigation />
+          <ContentWrapper>
+            <Switch>
+              {routes.map((route) => {
+                return (
+                  <Route
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                  />
+                );
+              })}
+            </Switch>
+          </ContentWrapper>
+          <Footer />
+        </AppContentWrapper>
+      </AppMainWrapper>
+      <ModalComponent />
+    </>
   );
 };
 

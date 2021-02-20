@@ -26,7 +26,7 @@ import {
   RegisterLink,
 } from "../components/styled/onboarding";
 
-import logo from "../assets/images/logo.png";
+import logo from "../assets/images/logo-alt.svg";
 import google from "../assets/images/google.svg";
 
 const RegisterForm = styled(Form)`
@@ -68,7 +68,7 @@ const RegisterPage = ({ loginUser }) => {
         setAuthToken(token);
         loginUser(user);
       } catch (e) {
-        console.log(e.response.data.message);
+        // console.log(e.response.data.message);
       } finally {
         setLoading(false);
       }

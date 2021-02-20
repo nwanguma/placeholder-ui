@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 
 const Nav = styled.nav`
   height: 8rem;
@@ -15,8 +15,8 @@ const Nav = styled.nav`
 `;
 
 const LogoBox = styled(NavLink)`
-  width: 3rem;
-  height: 3rem;
+  width: 4.5rem;
+  height: 4.5rem;
   margin-right: 3%;
 `;
 
@@ -50,8 +50,9 @@ const navigationItems = [
   { title: "Home", path: "/app", exact: true },
   { title: "Challenges", path: "/app/challenges" },
   { title: "Bounties", path: "/app/bounties" },
-  { title: "Blog", path: "/blog" },
-  { title: "Product of the week", path: "/product-spotlight" },
+  { title: "Jobs", path: "/app/jobs" },
+  { title: "Blog", path: "/app/blog" },
+  { title: "Product of the week", path: "/app/product-spotlight" },
   { title: "Profile", path: "/app/profile" },
   { title: "Settings", path: "/app/settings" },
 ];
