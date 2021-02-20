@@ -7,13 +7,16 @@ import successIcon from "../../assets/images/caretRight.svg";
 const StyledLabel = styled.label`
   width: max-content;
   font-style: normal;
-  font-size: 1.2rem;
+  display: inline-block;
+  font-size: 1.4rem;
   line-height: 16px;
   letter-spacing: -0.3px;
-  color: ${({ error }) => (error ? "#ED4777" : "#0303d6")};
-  margin-bottom: 7px;
-  position: absolute;
-  top: -0.8rem;
+  /* color: ${({ error }) => (error ? "#ED4777" : "#0303d6")}; */
+  font-weight: 600;
+  color: #707070;
+  margin-bottom: 1.5rem;
+  /* position: absolute;
+  top: -0.8rem; */
   padding: 0 0.1rem;
   background-color: #fff;
   left: 1.6rem;
@@ -35,7 +38,7 @@ const StyledInput = styled.input`
   border-radius: 4px;
   padding: 0 1.6rem;
 
-  &:disabled {
+  /* &:disabled {
     background: #f2f4f2;
   }
 
@@ -47,7 +50,7 @@ const StyledInput = styled.input`
     z-index: -3;
     top: 1.4rem;
     opacity: 0;
-  }
+  } */
 
   @media screen and (max-width: 87.85em) {
     /* height: 46px; */
@@ -101,6 +104,11 @@ const Input = ({
 }) => {
   return (
     <>
+      {label && (
+        <StyledLabel error={error} htmlFor={name} label={label}>
+          {label}
+        </StyledLabel>
+      )}
       <StyledInput
         disabled={disabled}
         name={name}
@@ -119,11 +127,6 @@ const Input = ({
         label={label}
         autoComplete={autoComplete}
       />
-      {label && (
-        <StyledLabel error={error} htmlFor={name} label={label}>
-          {label}
-        </StyledLabel>
-      )}
       {error && (
         <Error>
           <ErrorIcon src={errorIcon} alt=""></ErrorIcon>

@@ -12,8 +12,8 @@ import {
   Submit,
 } from "../../components/styled/form";
 import Input from "../../components/common/Input";
-import Select from "../../components/common/Select";
 import Textarea from "../../components/common/Textarea";
+import RadioButton from "../../components/common/RadioButton";
 
 const Wrapper = styled.div``;
 
@@ -27,16 +27,33 @@ const FormContainer = styled.div``;
 
 const Form = styled.form``;
 
+const FormGroupRadio = styled(FormGroup)``;
+
+const FormGroupRadioLabel = styled.p`
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #707070;
+`;
+
+const FormGroupRadioButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const FormGroupComments = styled(FormGroup)`
+  margin-top: 3.5rem;
+`;
+
 const PostProduct = () => {
   const [formState, setFormState] = useState({
-    title: "",
-    description: "",
-    instructions: "",
-    tags: [],
-    stack: "",
+    firstname: "",
+    lastname: "",
+    comments: "",
     challengeRepo: "",
-    company: "",
-    companyUrl: "",
+    website: "",
+    githubUrl: "",
+    employmentStatus: false,
   });
 
   const handleOnChange = ({ target }) => {
@@ -46,94 +63,93 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Complete Challenge</Heading>
       </Content>
       <FormContainer>
         <Form>
           <FormGroupContainer>
             <FormGroup>
               <Input
-                name="title"
-                value={formState.title}
+                name="firstname"
+                value={formState.firstname}
                 type="text"
-                placeholder="Title"
-                label="Title"
+                placeholder="First name"
+                label="First name"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="tags"
-                value={formState.tags}
+                name="lastname"
+                value={formState.lastname}
                 type="text"
-                placeholder="Tags"
-                label="Tags"
+                placeholder="Last name"
+                label="Last name"
                 handleOnChange={handleOnChange}
               />
-            </FormGroup>
-            <FormGroup>
-              <Select
-                name="stack"
-                value={formState.stack}
-                handleOnChange={handleOnChange}
-              >
-                <option value="">Select role</option>
-                <option value="Backend">Backend Development</option>
-                <option value="Frontend">Frontend Development</option>
-                <option value="Fullstack">Fullstack Development</option>
-              </Select>
             </FormGroup>
             <FormGroup>
               <Input
                 name="challengeRepo"
                 value={formState.challengeRepo}
                 type="text"
-                placeholder="Challenge repository"
+                placeholder="https://example.com"
                 label="Challenge repository"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="company"
-                value={formState.company}
+                name="website"
+                value={formState.website}
                 type="text"
-                placeholder="Company name"
-                label="Company name"
+                placeholder="https://example.com"
+                label="Challenge website"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="companyUrl"
-                value={formState.companyUrl}
+                name="githubUrl"
+                value={formState.githubUrl}
                 type="text"
-                placeholder="Company website"
-                label="Company website"
+                placeholder="https://example.com"
+                label="Your Github URL"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
-            <FormGroup>
-              <Textarea
-                name="description"
-                value={formState.description}
-                type="text"
-                placeholder="Description"
-                label="Description"
-                handleOnChange={handleOnChange}
-              ></Textarea>
-            </FormGroup>
-            <FormGroup>
-              <Textarea
-                name="instructions"
-                value={formState.instructions}
-                type="text"
-                placeholder="Instructions"
-                label="Instructions"
-                handleOnChange={handleOnChange}
-              ></Textarea>
-            </FormGroup>
+            <FormGroupRadio>
+              <FormGroupRadioLabel>Are you employed?</FormGroupRadioLabel>
+              <FormGroupRadioButtonContainer>
+                <RadioButton
+                  name="employmentStatus"
+                  value={formState.employmentStatus}
+                  type="radio"
+                  id="yes"
+                  label="Yes"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+                <RadioButton
+                  name="employmentStatus"
+                  value={formState.employmentStatus}
+                  type="radio"
+                  label="No"
+                  id="no"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+              </FormGroupRadioButtonContainer>
+            </FormGroupRadio>
           </FormGroupContainer>
+          <FormGroupComments>
+            <Textarea
+              name="comments"
+              value={formState.comments}
+              type="text"
+              placeholder="Comments"
+              label="Comments"
+              handleOnChange={handleOnChange}
+            ></Textarea>
+          </FormGroupComments>
           <Submit type="submit">Submit</Submit>
         </Form>
       </FormContainer>

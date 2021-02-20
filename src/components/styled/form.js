@@ -7,7 +7,7 @@ export const Form = styled.form`
 export const FormGroupContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3.7rem;
+  gap: 3rem;
 `;
 
 export const FormGroup = styled.div`

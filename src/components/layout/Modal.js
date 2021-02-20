@@ -44,7 +44,7 @@ const Modal = styled.div`
 `;
 
 const ModalComponent = () => {
-  const [component, setComponent] = useState("createChallenge");
+  const [component, setComponent] = useState("completeChallenge");
 
   return (
     <Wrapper>

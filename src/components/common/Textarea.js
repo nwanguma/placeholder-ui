@@ -1,19 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-import errorIcon from "../../assets/images/caretRight.svg";
-import successIcon from "../../assets/images/caretRight.svg";
+import errorIcon from "../../assets/images/circle-cross.svg";
+import successIcon from "../../assets/images/circle-check.svg";
 
 const StyledLabel = styled.label`
-  width: max-content;
   font-style: normal;
-  font-size: 1.2rem;
+  display: inline-block;
+  font-size: 1.4rem;
   line-height: 16px;
   letter-spacing: -0.3px;
-  color: ${({ error }) => (error ? "#ED4777" : "#0303d6")};
-  margin-bottom: 7px;
-  position: absolute;
-  top: -0.8rem;
+  /* color: ${({ error }) => (error ? "#ED4777" : "#0303d6")}; */
+  font-weight: 600;
+  color: #707070;
+  margin-bottom: 1.5rem;
   padding: 0 0.1rem;
   background-color: #fff;
   left: 1.6rem;
@@ -22,43 +22,22 @@ const StyledLabel = styled.label`
 
 const StyledTextarea = styled.textarea`
   width: 100%;
-  border: 1px solid ${({ error }) => (error ? "#efe1e1" : "#CFD7DC")};
   box-sizing: border-box;
-  height: 3.8rem;
+  /* border: 1px solid ${({ error }) => (error ? "#efe1e1" : "#CFD7DC")}; */
   background: #ffffff;
   border: 1px solid rgba(119, 134, 158, 0.3);
-  /* line-height: ${({ label }) => (label ? "5rem" : "4.8rem")}; */
-  /* padding: ${({ label }) =>
-    label ? "1rem 1.5rem 0 1.5rem" : "0 1.5rem 0 1.5rem"}; */
   border-radius: 4px;
   font-size: 1.4rem;
   border-radius: 4px;
   padding: 0 1.6rem;
   resize: none;
   height: 9rem;
-  padding-top: 2rem;
+  padding-top: 1.2rem;
+  line-height: 1.8rem;
 
-  &:disabled {
-    background: #f2f4f2;
-  }
-
-  &:placeholder-shown {
-    padding: 1rem 1.5rem;
-  }
-
-  &:placeholder-shown + label {
-    z-index: -3;
-    top: 1.4rem;
-    opacity: 0;
-  }
-
-  @media screen and (max-width: 87.85em) {
-    /* height: 46px; */
-  }
-
-  @media ${({ theme }) => theme.mediaQueries.tablet} {
-    /* height: 4rem; */
-  }
+  /* @media ${({ theme }) => theme.mediaQueries.tablet} {
+    height: 4rem;
+  } */
 
   &::placeholder {
     font-style: normal;
@@ -104,6 +83,11 @@ const Input = ({
 }) => {
   return (
     <>
+      {label && (
+        <StyledLabel error={error} htmlFor={name} label={label}>
+          {label}
+        </StyledLabel>
+      )}
       <StyledTextarea
         disabled={disabled}
         name={name}
@@ -122,11 +106,6 @@ const Input = ({
         label={label}
         autoComplete={autoComplete}
       />
-      {label && (
-        <StyledLabel error={error} htmlFor={name} label={label}>
-          {label}
-        </StyledLabel>
-      )}
       {error && (
         <Error>
           <ErrorIcon src={errorIcon} alt=""></ErrorIcon>

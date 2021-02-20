@@ -46,7 +46,7 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Edit Challenge</Heading>
       </Content>
       <FormContainer>
         <Form>
