@@ -4,16 +4,15 @@ import styled from "styled-components";
 import {
   FormGroupContainer,
   FormGroup,
-  Option,
-  Success,
-  SuccessImage,
-  Error,
-  ErrorImage,
+  FormGroupRadio,
+  FormGroupRadioLabel,
+  FormGroupRadioButtonContainer,
   Submit,
 } from "../../components/styled/form";
 import Input from "../../components/common/Input";
 import Select from "../../components/common/Select";
 import Textarea from "../../components/common/Textarea";
+import RadioButton from "../../components/common/RadioButton";
 
 const Wrapper = styled.div``;
 
@@ -31,12 +30,15 @@ const PostProduct = () => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
-    instructions: "",
+    responsibilities: [],
     tags: [],
     stack: "",
-    challengeRepo: "",
+    qualifications: "",
+    experienceLevel: "",
+    benefits: "",
     company: "",
     companyUrl: "",
+    applicationUrl: "",
   });
 
   const handleOnChange = ({ target }) => {
@@ -46,7 +48,7 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Post Job</Heading>
       </Content>
       <FormContainer>
         <Form>
@@ -58,38 +60,6 @@ const PostProduct = () => {
                 type="text"
                 placeholder="Title"
                 label="Title"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="tags"
-                value={formState.tags}
-                type="text"
-                placeholder="Tags"
-                label="Tags"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Select
-                name="stack"
-                value={formState.stack}
-                handleOnChange={handleOnChange}
-              >
-                <option value="">Select role</option>
-                <option value="Backend">Backend Development</option>
-                <option value="Frontend">Frontend Development</option>
-                <option value="Fullstack">Fullstack Development</option>
-              </Select>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="challengeRepo"
-                value={formState.challengeRepo}
-                type="text"
-                placeholder="Challenge repository"
-                label="Challenge repository"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
@@ -108,10 +78,62 @@ const PostProduct = () => {
                 name="companyUrl"
                 value={formState.companyUrl}
                 type="text"
-                placeholder="Company website"
+                placeholder="https://example.com"
                 label="Company website"
                 handleOnChange={handleOnChange}
               />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="applicationUrl"
+                value={formState.applicationUrl}
+                type="text"
+                placeholder="https://example.com"
+                label="Application link"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroupRadio>
+              <FormGroupRadioLabel>Experience level?</FormGroupRadioLabel>
+              <FormGroupRadioButtonContainer>
+                <RadioButton
+                  name="experienceLevel"
+                  value={formState.experienceLevel}
+                  type="radio"
+                  id="0-1"
+                  label="0 - 1year"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+                <RadioButton
+                  name="experienceLevel"
+                  value={formState.experienceLevel}
+                  type="radio"
+                  id="1-2"
+                  label="1 - 2years"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+                <RadioButton
+                  name="experienceLevel"
+                  value={formState.experienceLevel}
+                  type="radio"
+                  id="2-4"
+                  label="2 - 4years"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+              </FormGroupRadioButtonContainer>
+            </FormGroupRadio>
+            <FormGroup>
+              <Select
+                name="stack"
+                value={formState.stack}
+                handleOnChange={handleOnChange}
+                label="Role"
+              >
+                <option value="">Select role</option>
+                <option value="Backend">Backend Development</option>
+                <option value="Frontend">Frontend Development</option>
+                <option value="Fullstack">Fullstack Development</option>
+              </Select>
             </FormGroup>
             <FormGroup>
               <Textarea
@@ -125,11 +147,11 @@ const PostProduct = () => {
             </FormGroup>
             <FormGroup>
               <Textarea
-                name="instructions"
-                value={formState.instructions}
+                name="responsibilities"
+                value={formState.responsibilities}
                 type="text"
-                placeholder="Instructions"
-                label="Instructions"
+                placeholder="Responsibilities"
+                label="Responsibilities"
                 handleOnChange={handleOnChange}
               ></Textarea>
             </FormGroup>

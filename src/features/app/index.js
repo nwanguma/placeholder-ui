@@ -16,7 +16,7 @@ const AppMainWrapper = styled.div`
 const AppContentWrapper = styled.div`
   width: 65%;
   margin: 0 auto;
-  background-color: #f7f7ff;
+  background-color: #f9f9f9;
 `;
 
 const ContentWrapper = styled.div`
@@ -46,7 +46,7 @@ const App = () => {
           <Footer />
         </AppContentWrapper>
       </AppMainWrapper>
-      <ModalComponent />
+      {/* <ModalComponent /> */}
     </>
   );
 };

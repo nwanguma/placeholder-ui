@@ -4,15 +4,9 @@ import styled from "styled-components";
 import {
   FormGroupContainer,
   FormGroup,
-  Option,
-  Success,
-  SuccessImage,
-  Error,
-  ErrorImage,
   Submit,
 } from "../../components/styled/form";
 import Input from "../../components/common/Input";
-import Select from "../../components/common/Select";
 import Textarea from "../../components/common/Textarea";
 
 const Wrapper = styled.div``;
@@ -27,16 +21,25 @@ const FormContainer = styled.div``;
 
 const Form = styled.form``;
 
-const PostProduct = () => {
+const UpdateProduct = () => {
   const [formState, setFormState] = useState({
-    title: "",
+    product: "",
+    productUrl: "",
     description: "",
-    instructions: "",
-    tags: [],
-    stack: "",
-    challengeRepo: "",
-    company: "",
-    companyUrl: "",
+    makers: [
+      {
+        name: "",
+        email: "",
+        twitterUrl: "",
+        linkedinUrl: "",
+      },
+    ],
+    poster: {
+      name: "",
+      email: "",
+      twitterUrl: "",
+      linkedinUrl: "",
+    },
   });
 
   const handleOnChange = ({ target }) => {
@@ -46,70 +49,108 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Update Product</Heading>
       </Content>
       <FormContainer>
         <Form>
           <FormGroupContainer>
             <FormGroup>
               <Input
-                name="title"
-                value={formState.title}
+                name="product"
+                value={formState.product}
                 type="text"
-                placeholder="Title"
-                label="Title"
+                placeholder="Product name"
+                label="Product name"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="tags"
-                value={formState.tags}
+                name="productUrl"
+                value={formState.productUrl}
                 type="text"
-                placeholder="Tags"
-                label="Tags"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Select
-                name="stack"
-                value={formState.stack}
-                handleOnChange={handleOnChange}
-              >
-                <option value="">Select role</option>
-                <option value="Backend">Backend Development</option>
-                <option value="Frontend">Frontend Development</option>
-                <option value="Fullstack">Fullstack Development</option>
-              </Select>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="challengeRepo"
-                value={formState.challengeRepo}
-                type="text"
-                placeholder="Challenge repository"
-                label="Challenge repository"
+                placeholder="https://example.com"
+                label="Product website"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="company"
-                value={formState.company}
+                name="name"
+                value={formState.makers[0].name}
                 type="text"
-                placeholder="Company name"
-                label="Company name"
+                placeholder="Name"
+                label="Maker's name"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="companyUrl"
-                value={formState.companyUrl}
+                name="email"
+                value={formState.makers[0].email}
                 type="text"
-                placeholder="Company website"
-                label="Company website"
+                placeholder="https://example.com"
+                label="Maker's email"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="twitterUrl"
+                value={formState.makers[0].twitterUrl}
+                type="text"
+                placeholder="https://example.com"
+                label="Maker's Twitter"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="linkedinUrl"
+                value={formState.makers[0].linkedinUrl}
+                type="text"
+                placeholder="https://example.com"
+                label="Maker's LinkedIn"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="name"
+                value={formState.poster.name}
+                type="text"
+                placeholder="Name"
+                label="Poster's name"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="email"
+                value={formState.poster.email}
+                type="text"
+                placeholder="https://example.com"
+                label="Poster's email"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="twitterUrl"
+                value={formState.poster.twitterUrl}
+                type="text"
+                placeholder="https://example.com"
+                label="Poster's Twitter"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="linkedinUrl"
+                value={formState.poster.linkedinUrl}
+                type="text"
+                placeholder="https://example.com"
+                label="Poster's LinkedIn"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
@@ -125,11 +166,11 @@ const PostProduct = () => {
             </FormGroup>
             <FormGroup>
               <Textarea
-                name="instructions"
-                value={formState.instructions}
+                name="responsibilities"
+                value={formState.responsibilities}
                 type="text"
-                placeholder="Instructions"
-                label="Instructions"
+                placeholder="Responsibilities"
+                label="Responsibilities"
                 handleOnChange={handleOnChange}
               ></Textarea>
             </FormGroup>
@@ -141,4 +182,4 @@ const PostProduct = () => {
   );
 };
 
-export default PostProduct;
+export default UpdateProduct;

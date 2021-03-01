@@ -45,17 +45,15 @@ const FormGroupComments = styled(FormGroup)`
   margin-top: 3.5rem;
 `;
 
-const CompleteBounty = () => {
+const EditCompletedChallenge = () => {
   const [formState, setFormState] = useState({
     firstname: "",
     lastname: "",
-    title: "",
-    domain: "",
-    subdomain: "",
-    contactInfo: "",
-    description: "",
-    stepsToReproduce: "",
-    impact: "",
+    comments: "",
+    challengeRepo: "",
+    website: "",
+    githubUrl: "",
+    employmentStatus: false,
   });
 
   const handleOnChange = ({ target }) => {
@@ -65,7 +63,7 @@ const CompleteBounty = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Edit Completed Bounty</Heading>
+        <Heading>Edit Completed Challenge</Heading>
       </Content>
       <FormContainer>
         <Form>
@@ -92,65 +90,66 @@ const CompleteBounty = () => {
             </FormGroup>
             <FormGroup>
               <Input
-                name="title"
-                value={formState.title}
-                type="text"
-                placeholder="Title"
-                label="Title"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="contactInfo"
-                value={formState.contactInfo}
-                type="text"
-                placeholder="Contact information"
-                label="Contact information"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="domain"
-                value={formState.domain}
+                name="challengeRepo"
+                value={formState.challengeRepo}
                 type="text"
                 placeholder="https://example.com"
-                label="Domain"
+                label="Challenge repository"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="subdomain"
-                value={formState.subdomain}
+                name="website"
+                value={formState.website}
                 type="text"
-                placeholder="https://subdomain.example.com"
-                label="Subdomain"
+                placeholder="https://example.com"
+                label="Challenge website"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
-              <Textarea
-                name="description"
-                value={formState.description}
+              <Input
+                name="githubUrl"
+                value={formState.githubUrl}
                 type="text"
-                placeholder="Description"
-                label="Description"
+                placeholder="https://example.com"
+                label="Your Github URL"
                 handleOnChange={handleOnChange}
-              ></Textarea>
+              />
             </FormGroup>
-            <FormGroup>
-              <Textarea
-                name="steps to reproduce"
-                value={formState.stepsToReproduce}
-                type="text"
-                placeholder="Steps to reproduce this bug"
-                label="Steps to reproduce"
-                handleOnChange={handleOnChange}
-              ></Textarea>
-            </FormGroup>
+            <FormGroupRadio>
+              <FormGroupRadioLabel>Are you employed?</FormGroupRadioLabel>
+              <FormGroupRadioButtonContainer>
+                <RadioButton
+                  name="employmentStatus"
+                  value={formState.employmentStatus}
+                  type="radio"
+                  id="yes"
+                  label="Yes"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+                <RadioButton
+                  name="employmentStatus"
+                  value={formState.employmentStatus}
+                  type="radio"
+                  label="No"
+                  id="no"
+                  handleOnChange={handleOnChange}
+                ></RadioButton>
+              </FormGroupRadioButtonContainer>
+            </FormGroupRadio>
           </FormGroupContainer>
+          <FormGroupComments>
+            <Textarea
+              name="comments"
+              value={formState.comments}
+              type="text"
+              placeholder="Comments"
+              label="Comments"
+              handleOnChange={handleOnChange}
+            ></Textarea>
+          </FormGroupComments>
           <Submit type="submit">Submit</Submit>
         </Form>
       </FormContainer>
@@ -158,4 +157,4 @@ const CompleteBounty = () => {
   );
 };
 
-export default CompleteBounty;
+export default EditCompletedChallenge;

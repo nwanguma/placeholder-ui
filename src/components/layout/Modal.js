@@ -4,11 +4,11 @@ import styled from "styled-components";
 import CreateChallenge from "../../features/challenges/CreateChallenge";
 import EditChallenge from "../../features/challenges/EditChallenge";
 import CompleteChallenge from "../../features/challenges/CompleteChallenge";
-import UpdateCompletedChallenge from "../../features/challenges/UpdateCompletedChallenge";
+import EditCompletedChallenge from "../../features/challenges/EditCompletedChallenge";
 import CreateBounty from "../../features/bounties/CreateBounty";
 import EditBounty from "../../features/bounties/EditBounty";
 import CompleteBounty from "../../features/bounties/CompleteBounty";
-import UpdateCompletedBounty from "../../features/bounties/UpdateCompletedBounty";
+import EditCompletedBounty from "../../features/bounties/EditCompletedBounty";
 import PostBlogpost from "../../features/blog/PostBlogpost";
 import UpdateBlogpost from "../../features/blog/UpdateBlogpost";
 import PostProduct from "../../features/productSpotlight/PostProduct";
@@ -44,7 +44,7 @@ const Modal = styled.div`
 `;
 
 const ModalComponent = () => {
-  const [component, setComponent] = useState("completeChallenge");
+  const [component, setComponent] = useState("viewProduct");
 
   return (
     <Wrapper>
@@ -55,11 +55,11 @@ const ModalComponent = () => {
               createChallenge: <CreateChallenge />,
               editChallenge: <EditChallenge />,
               completeChallenge: <CompleteChallenge />,
-              updateCompletedChallenge: <UpdateCompletedChallenge />,
+              editCompletedChallenge: <EditCompletedChallenge />,
               createBounty: <CreateBounty />,
               editBounty: <EditBounty />,
               completeBounty: <CompleteBounty />,
-              updateCompletedBounty: <UpdateCompletedBounty />,
+              editCompletedBounty: <EditCompletedBounty />,
               postBlogpost: <PostBlogpost />,
               updateBlogpost: <UpdateBlogpost />,
               postProduct: <PostProduct />,

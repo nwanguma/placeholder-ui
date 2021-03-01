@@ -17,6 +17,20 @@ export const FormGroup = styled.div`
   position: relative;
 `;
 
+export const FormGroupRadio = styled(FormGroup)``;
+
+export const FormGroupRadioLabel = styled.p`
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #707070;
+`;
+
+export const FormGroupRadioButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 export const Submit = styled.button`
   cursor: pointer;
   width: 100%;

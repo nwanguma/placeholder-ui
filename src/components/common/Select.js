@@ -2,15 +2,22 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledLabel = styled.label`
-  width: 100%;
+  width: max-content;
   font-style: normal;
-  font-weight: 800;
-  font-size: 12px;
+  display: inline-block;
+  font-size: 1.4rem;
   line-height: 16px;
   letter-spacing: -0.3px;
-  color: #36b26c;
-  margin-bottom: 7px;
-  display: ${({ label }) => (!label ? "none" : "inline-block")};
+  /* color: ${({ error }) => (error ? "#ED4777" : "#0303d6")}; */
+  font-weight: 600;
+  color: #707070;
+  margin-bottom: 1.5rem;
+  /* position: absolute;
+  top: -0.8rem; */
+  padding: 0 0.1rem;
+  background-color: #fff;
+  left: 1.6rem;
+  transition: 0.2s all;
 `;
 
 const StyledSelect = styled.select`

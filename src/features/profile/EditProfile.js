@@ -4,11 +4,6 @@ import styled from "styled-components";
 import {
   FormGroupContainer,
   FormGroup,
-  Option,
-  Success,
-  SuccessImage,
-  Error,
-  ErrorImage,
   Submit,
 } from "../../components/styled/form";
 import Input from "../../components/common/Input";
@@ -27,16 +22,24 @@ const FormContainer = styled.div``;
 
 const Form = styled.form``;
 
-const PostProduct = () => {
+const FormGroupTwitter = styled(FormGroup)`
+  margin: 3.5rem 0;
+`;
+
+const FormGroupBio = styled.div``;
+
+const EditProfile = () => {
   const [formState, setFormState] = useState({
-    title: "",
-    description: "",
-    instructions: "",
-    tags: [],
-    stack: "",
-    challengeRepo: "",
+    firstname: "",
+    lastname: "",
+    role: "",
+    age: "",
+    bio: "",
     company: "",
-    companyUrl: "",
+    githubUrl: "",
+    twitterUrl: "",
+    linkedinUrl: "",
+    website: "",
   });
 
   const handleOnChange = ({ target }) => {
@@ -46,36 +49,37 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Edit Profile</Heading>
       </Content>
       <FormContainer>
         <Form>
           <FormGroupContainer>
             <FormGroup>
               <Input
-                name="title"
-                value={formState.title}
+                name="firstname"
+                value={formState.firstname}
                 type="text"
-                placeholder="Title"
-                label="Title"
+                placeholder="First name"
+                label="First name"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="tags"
-                value={formState.tags}
+                name="lastname"
+                value={formState.lastname}
                 type="text"
-                placeholder="Tags"
-                label="Tags"
+                placeholder="Last name"
+                label="Last name"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Select
                 name="stack"
-                value={formState.stack}
+                value={formState.occupation}
                 handleOnChange={handleOnChange}
+                label="Role"
               >
                 <option value="">Select role</option>
                 <option value="Backend">Backend Development</option>
@@ -85,11 +89,11 @@ const PostProduct = () => {
             </FormGroup>
             <FormGroup>
               <Input
-                name="challengeRepo"
-                value={formState.challengeRepo}
+                name="age"
+                value={formState.age}
                 type="text"
-                placeholder="Challenge repository"
-                label="Challenge repository"
+                placeholder="Age"
+                label="Age"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
@@ -98,42 +102,62 @@ const PostProduct = () => {
                 name="company"
                 value={formState.company}
                 type="text"
-                placeholder="Company name"
-                label="Company name"
+                placeholder="https://example.com"
+                label="Company's website"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="companyUrl"
-                value={formState.companyUrl}
+                name="githubUrl"
+                value={formState.githubUrl}
                 type="text"
-                placeholder="Company website"
-                label="Company website"
+                placeholder="https://github.com/example"
+                label="Github URL"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
-              <Textarea
-                name="description"
-                value={formState.description}
+              <Input
+                name="website"
+                value={formState.website}
                 type="text"
-                placeholder="Description"
-                label="Description"
+                placeholder="https://example.com"
+                label="Personal website"
                 handleOnChange={handleOnChange}
-              ></Textarea>
+              />
             </FormGroup>
             <FormGroup>
-              <Textarea
-                name="instructions"
-                value={formState.instructions}
+              <Input
+                name="linkedinUrl"
+                value={formState.linkedinUrl}
                 type="text"
-                placeholder="Instructions"
-                label="Instructions"
+                placeholder="https://linkedin.com/example"
+                label="Linkedin"
                 handleOnChange={handleOnChange}
-              ></Textarea>
+              />
             </FormGroup>
           </FormGroupContainer>
+          <FormGroupTwitter>
+            <Input
+              name="twitterUrl"
+              value={formState.twitterUrl}
+              type="text"
+              placeholder="https://twitter.com/example"
+              label="Twitter"
+              handleOnChange={handleOnChange}
+            />
+          </FormGroupTwitter>
+          <FormGroupBio>
+            <Textarea
+              name="bio"
+              value={formState.bio}
+              type="text"
+              placeholder="Bio"
+              label="Bio"
+              handleOnChange={handleOnChange}
+            ></Textarea>
+          </FormGroupBio>
           <Submit type="submit">Submit</Submit>
         </Form>
       </FormContainer>
@@ -141,4 +165,4 @@ const PostProduct = () => {
   );
 };
 
-export default PostProduct;
+export default EditProfile;

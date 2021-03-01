@@ -4,6 +4,9 @@ import styled from "styled-components";
 import {
   FormGroupContainer,
   FormGroup,
+  FormGroupRadio,
+  FormGroupRadioLabel,
+  FormGroupRadioButtonContainer,
   Option,
   Success,
   SuccessImage,
@@ -27,21 +30,7 @@ const FormContainer = styled.div``;
 
 const Form = styled.form``;
 
-const FormGroupRadio = styled(FormGroup)``;
-
-const FormGroupRadioLabel = styled.p`
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #707070;
-`;
-
-const FormGroupRadioButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const FormGroupComments = styled(FormGroup)`
+export const FormGroupComments = styled(FormGroup)`
   margin-top: 3.5rem;
 `;
 

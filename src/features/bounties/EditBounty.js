@@ -27,16 +27,14 @@ const FormContainer = styled.div``;
 
 const Form = styled.form``;
 
-const PostProduct = () => {
+const EditBounty = () => {
   const [formState, setFormState] = useState({
     title: "",
     description: "",
     instructions: "",
-    tags: [],
-    stack: "",
-    challengeRepo: "",
-    company: "",
-    companyUrl: "",
+    product: "",
+    productUrl: "",
+    expiry: "",
   });
 
   const handleOnChange = ({ target }) => {
@@ -46,7 +44,7 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Edit Bounty</Heading>
       </Content>
       <FormContainer>
         <Form>
@@ -63,53 +61,31 @@ const PostProduct = () => {
             </FormGroup>
             <FormGroup>
               <Input
-                name="tags"
-                value={formState.tags}
+                name="product"
+                value={formState.product}
                 type="text"
-                placeholder="Tags"
-                label="Tags"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Select
-                name="stack"
-                value={formState.stack}
-                handleOnChange={handleOnChange}
-              >
-                <option value="">Select role</option>
-                <option value="Backend">Backend Development</option>
-                <option value="Frontend">Frontend Development</option>
-                <option value="Fullstack">Fullstack Development</option>
-              </Select>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="challengeRepo"
-                value={formState.challengeRepo}
-                type="text"
-                placeholder="Challenge repository"
-                label="Challenge repository"
+                placeholder="Product name"
+                label="Product name"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="company"
-                value={formState.company}
+                name="productUrl"
+                value={formState.productUrl}
                 type="text"
-                placeholder="Company name"
-                label="Company name"
+                placeholder="https://example.com"
+                label="Product website"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="companyUrl"
-                value={formState.companyUrl}
-                type="text"
-                placeholder="Company website"
-                label="Company website"
+                name="expiry"
+                value={formState.expiry}
+                type="date"
+                // placeholder="https://subdomain.example.com"
+                label="Expires"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
@@ -141,4 +117,4 @@ const PostProduct = () => {
   );
 };
 
-export default PostProduct;
+export default EditBounty;

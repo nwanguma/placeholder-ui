@@ -12,8 +12,8 @@ import {
   Submit,
 } from "../../components/styled/form";
 import Input from "../../components/common/Input";
-import Select from "../../components/common/Select";
 import Textarea from "../../components/common/Textarea";
+import RadioButton from "../../components/common/RadioButton";
 
 const Wrapper = styled.div``;
 
@@ -27,16 +27,35 @@ const FormContainer = styled.div``;
 
 const Form = styled.form``;
 
-const PostProduct = () => {
+const FormGroupRadio = styled(FormGroup)``;
+
+const FormGroupRadioLabel = styled.p`
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #707070;
+`;
+
+const FormGroupRadioButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const FormGroupComments = styled(FormGroup)`
+  margin-top: 3.5rem;
+`;
+
+const EditCompletedBounty = () => {
   const [formState, setFormState] = useState({
+    firstname: "",
+    lastname: "",
     title: "",
+    domain: "",
+    subdomain: "",
+    contactInfo: "",
     description: "",
-    instructions: "",
-    tags: [],
-    stack: "",
-    challengeRepo: "",
-    company: "",
-    companyUrl: "",
+    stepsToReproduce: "",
+    impact: "",
   });
 
   const handleOnChange = ({ target }) => {
@@ -46,11 +65,31 @@ const PostProduct = () => {
   return (
     <Wrapper>
       <Content>
-        <Heading>Create Challenge</Heading>
+        <Heading>Edit Completed Bounty</Heading>
       </Content>
       <FormContainer>
         <Form>
           <FormGroupContainer>
+            <FormGroup>
+              <Input
+                name="firstname"
+                value={formState.firstname}
+                type="text"
+                placeholder="First name"
+                label="First name"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                name="lastname"
+                value={formState.lastname}
+                type="text"
+                placeholder="Last name"
+                label="Last name"
+                handleOnChange={handleOnChange}
+              />
+            </FormGroup>
             <FormGroup>
               <Input
                 name="title"
@@ -63,53 +102,31 @@ const PostProduct = () => {
             </FormGroup>
             <FormGroup>
               <Input
-                name="tags"
-                value={formState.tags}
+                name="contactInfo"
+                value={formState.contactInfo}
                 type="text"
-                placeholder="Tags"
-                label="Tags"
-                handleOnChange={handleOnChange}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Select
-                name="stack"
-                value={formState.stack}
-                handleOnChange={handleOnChange}
-              >
-                <option value="">Select role</option>
-                <option value="Backend">Backend Development</option>
-                <option value="Frontend">Frontend Development</option>
-                <option value="Fullstack">Fullstack Development</option>
-              </Select>
-            </FormGroup>
-            <FormGroup>
-              <Input
-                name="challengeRepo"
-                value={formState.challengeRepo}
-                type="text"
-                placeholder="Challenge repository"
-                label="Challenge repository"
+                placeholder="Contact information"
+                label="Contact information"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="company"
-                value={formState.company}
+                name="domain"
+                value={formState.domain}
                 type="text"
-                placeholder="Company name"
-                label="Company name"
+                placeholder="https://example.com"
+                label="Domain"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
             <FormGroup>
               <Input
-                name="companyUrl"
-                value={formState.companyUrl}
+                name="subdomain"
+                value={formState.subdomain}
                 type="text"
-                placeholder="Company website"
-                label="Company website"
+                placeholder="https://subdomain.example.com"
+                label="Subdomain"
                 handleOnChange={handleOnChange}
               />
             </FormGroup>
@@ -125,11 +142,11 @@ const PostProduct = () => {
             </FormGroup>
             <FormGroup>
               <Textarea
-                name="instructions"
-                value={formState.instructions}
+                name="steps to reproduce"
+                value={formState.stepsToReproduce}
                 type="text"
-                placeholder="Instructions"
-                label="Instructions"
+                placeholder="Steps to reproduce this bug"
+                label="Steps to reproduce"
                 handleOnChange={handleOnChange}
               ></Textarea>
             </FormGroup>
@@ -141,4 +158,4 @@ const PostProduct = () => {
   );
 };
 
-export default PostProduct;
+export default EditCompletedBounty;
