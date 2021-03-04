@@ -14,7 +14,7 @@ const AppMainWrapper = styled.div`
 `;
 
 const AppContentWrapper = styled.div`
-  width: 65%;
+  width: 85rem;
   margin: 0 auto;
   background-color: #f9f9f9;
 `;
@@ -35,6 +35,7 @@ const App = () => {
               {routes.map((route) => {
                 return (
                   <Route
+                    key={route.title}
                     path={route.path}
                     exact={route.exact}
                     component={route.component}
