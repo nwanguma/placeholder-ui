@@ -1,37 +1,79 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { Link } from "react-router-dom";
+
+import { LIST_JOBS } from "../../utils/constants";
+
+import Accordion from "../../components/common/Accordion";
+import AccordionItem from "../../components/common/AccordionItem";
+import Card from "../../components/common/Card";
 
 import share from "../../assets/images/share.svg";
 import logo from "../../assets/images/d-company.svg";
 
 const Jobs = () => {
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    let isCancelled;
+
+    (async function fetchJobs() {
+      try {
+        const res = await axios.get(LIST_JOBS);
+        const jobs = res.data.data;
+
+        setJobs(jobs);
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    })();
+
+    return () => {
+      isCancelled = true;
+    };
+  }, []);
+
   return (
     <Wrapper>
       <Heading>Jobs</Heading>
       <Content>
-        <CardContainer>
-          <ContentItem>
-            <Card>
-              <CardImageContainer>
-                <CardImage src={logo} alt=""></CardImage>
-              </CardImageContainer>
-              <CardText>
-                <CardTitle>Drilla Corp.</CardTitle>
-                <CardDesignation>Frontend Developer</CardDesignation>
-                <CardLocation>Lagos</CardLocation>
-              </CardText>
-              <CardActions>
-                <CardAction>View</CardAction>
-                <CardAction>Apply</CardAction>
-              </CardActions>
-              <SharePosting>
-                <ShareIcon src={share} alt=""></ShareIcon>
-                <ShareText>Share</ShareText>
-              </SharePosting>
-            </Card>
-            <ContentItemMain>Lorem ipsum dolor si amet</ContentItemMain>
-          </ContentItem>
-        </CardContainer>
+        <Accordion>
+          {jobs.map((job) => {
+            return (
+              <AccordionItem>
+                <Card id={job._id}>
+                  <CardImageContainer>
+                    <CardImage src={logo} alt=""></CardImage>
+                  </CardImageContainer>
+                  <CardText>
+                    <CardDesignation>{job.title}</CardDesignation>
+                    <CardCompany>{job.company}</CardCompany>
+                    <CardLocation>Lagos</CardLocation>
+                  </CardText>
+                  <CardActions>
+                    <CardAction>Share</CardAction>
+                    <CardActionApply
+                      href={job.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Apply
+                    </CardActionApply>
+                  </CardActions>
+                  {/* <SharePosting>
+                    <ShareIcon src={share} alt=""></ShareIcon>
+                    <ShareText>Share</ShareText>
+                  </SharePosting> */}
+                </Card>
+                <ContentItemMain>{job.description}</ContentItemMain>
+              </AccordionItem>
+            );
+          })}
+        </Accordion>
       </Content>
     </Wrapper>
   );
@@ -47,26 +89,10 @@ const Heading = styled.h2`
 
 const Content = styled.div``;
 
-const CardContainer = styled.div`
-  height: max-content;
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
-  background: #fff;
-`;
-
-const ContentItem = styled.div`
-  height: max-content;
-  transition: 0.5s all;
-`;
-
-const Card = styled.div`
-  height: 11rem;
-  border-bottom: 1px solid #e5e5e5;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2rem;
-  position: relative;
+const ContentItemMain = styled.div`
+  height: 9rem;
+  background: orange;
+  width: 100%;
 `;
 
 const CardImageContainer = styled.div`
@@ -84,9 +110,9 @@ const CardText = styled.div`
   flex: 1;
 `;
 
-const CardTitle = styled.h3``;
+const CardDesignation = styled.h3``;
 
-const CardDesignation = styled.p`
+const CardCompany = styled.p`
   margin: 1rem 0;
 `;
 
@@ -98,7 +124,7 @@ const CardActions = styled.div`
   justify-content: space-between;
 `;
 
-const CardAction = styled.div`
+const CardAction = styled.a`
   border: 1px solid #c4c4c4;
   width: 8rem;
   height: 2.7rem;
@@ -106,7 +132,11 @@ const CardAction = styled.div`
   font-weight: 500;
   text-align: center;
   border-radius: 0.4rem;
+  text-decoration: none;
+  color: #3d3d3d;
 `;
+
+const CardActionApply = styled(CardAction)``;
 
 const SharePosting = styled.span`
   display: inline-block;
@@ -141,12 +171,6 @@ const ShareText = styled.span`
   position: relative;
   bottom: 1.6rem;
   left: 2.9rem;
-`;
-
-const ContentItemMain = styled.div`
-  height: 9rem;
-  background: orange;
-  width: 100%;
 `;
 
 export default Jobs;

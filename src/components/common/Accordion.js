@@ -1,17 +1,37 @@
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import styled from "styled-components";
 
 const Accordion = ({ children }) => {
   const [isOpen, setIsOpen] = useState("");
 
-  return <AccordionWrapper>{children}</AccordionWrapper>;
+  const handleToggle = (id) => {
+    isOpen === id ? setIsOpen("") : setIsOpen(id);
+  };
+
+  return (
+    <AccordionWrapper>
+      {Children.map(children, (child) => {
+        const id = child.props.children[0].props.id;
+
+        const card = React.cloneElement(child.props.children[0], {
+          handleToggle,
+        });
+
+        const main = child.props.children[1];
+
+        return (
+          <AccordionChildWrapper>
+            {card}
+            {id === isOpen && main}
+          </AccordionChildWrapper>
+        );
+      })}
+    </AccordionWrapper>
+  );
 };
 
 export default Accordion;
 
 const AccordionWrapper = styled.div``;
 
-//we have two children - the card and the content
-//the card with have a data id corresponding to some unique value
-//the key here is to setisopen to that value
-//conditionally render the content if the first child's is set to isopen
+const AccordionChildWrapper = styled.div``;

@@ -1,0 +1,2 @@
+Add location to jobs endpoint
+Add application url to jobs endpoint

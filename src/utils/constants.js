@@ -15,3 +15,6 @@ export const REGISTER_USER = `${path}/user/register`;
 
 //Login user - POST
 export const LOGIN_USER = `${path}/user/login`;
+
+//Jobs
+export const LIST_JOBS = `${path}/jobs`;
