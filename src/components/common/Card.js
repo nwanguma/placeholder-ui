@@ -5,7 +5,7 @@ const Card = ({ children, handleToggle, id }) => {
     <CardWrapper
       data-id={id}
       onClick={() => {
-        handleToggle(id);
+        handleToggle && handleToggle(id);
       }}
     >
       {children}
@@ -16,7 +16,7 @@ const Card = ({ children, handleToggle, id }) => {
 export default Card;
 
 const CardWrapper = styled.div`
-  height: 11rem;
+  height: 11.5rem;
   border-bottom: 1px solid #e5e5e5;
   display: flex;
   justify-content: space-between;

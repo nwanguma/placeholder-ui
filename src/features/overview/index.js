@@ -1,17 +1,320 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import CopyToClipboard from "../../components/common/CopyToClipboard";
 import gift from "../../assets/images/gift.svg";
 import productlogo from "../../assets/images/d-company.svg";
 import appstorebadge from "../../assets/images/appstorebadge.svg";
 import playstorebadge from "../../assets/images/playstorebadge.svg";
-import meerkat from "../../assets/images/meerkat.jpg";
+import carouselImage1 from "../../assets/images/meerkat.jpg";
+// import carouselImage1 from "../../assets/images/carouselimage1.jpg";
+import carouselImage2 from "../../assets/images/carouselimage2.jpg";
 import twitterMain from "../../assets/images/twittermain.svg";
 import instagramMain from "../../assets/images/instagrammain.svg";
 import youtubeMain from "../../assets/images/youtubemain.svg";
+
+const OverviewPage = () => {
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    swipe: true,
+    arrows: false,
+    autoplay: true,
+    variableWidth: true,
+    responsive: [],
+  };
+
+  return (
+    <OverviewPageWrapper>
+      <SectionSpotlight>
+        <SectionSpotlightContent>
+          <SectionSpotlightContentLogoBox>
+            <SectionSpotlightContentLogo src={productlogo} />
+          </SectionSpotlightContentLogoBox>
+          <SectionSpotlightContentText>
+            <SectionSpotlightContentTextHeading>
+              Drilla
+            </SectionSpotlightContentTextHeading>
+            <SectionSpotlightContentTextSecondary>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
+              quos, repellat, omnis voluptatum officiis dolorum ducimus.
+            </SectionSpotlightContentTextSecondary>
+            <SectionSpotlightContentTextTags>
+              <SectionSpotlightContentTextTagsItem>
+                crypto
+              </SectionSpotlightContentTextTagsItem>
+              <SectionSpotlightContentTextTagsItem>
+                fintech
+              </SectionSpotlightContentTextTagsItem>
+              <SectionSpotlightContentTextTagsItem>
+                tech
+              </SectionSpotlightContentTextTagsItem>
+            </SectionSpotlightContentTextTags>
+            <SectionSpotlightContentTextLink to="/dashboard/product-of-the-week">
+              learn more &#8594;
+            </SectionSpotlightContentTextLink>
+          </SectionSpotlightContentText>
+        </SectionSpotlightContent>
+        <SectionSpotlightCarousel>
+          <StyledSlider {...settings}>
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>
+            <SliderItem>
+              <SliderItemImage src={carouselImage2} alt="" />
+            </SliderItem>
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>{" "}
+            <SliderItem>
+              <SliderItemImage src={carouselImage1} alt="" />
+            </SliderItem>
+          </StyledSlider>
+        </SectionSpotlightCarousel>
+      </SectionSpotlight>
+      <SectionEarnings>
+        <SectionEarningsContent>
+          <SectionEarningsHeading>Your earnings:</SectionEarningsHeading>
+          <SectionEarningsEarning>&#8358;3,000</SectionEarningsEarning>
+          <SectionEarningsLink to="/dashboard/earnings">
+            go to earnings &#8594;
+          </SectionEarningsLink>
+          <SectionEarningsNote>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid
+            dignissimos exercitationem cumque dolorum.
+          </SectionEarningsNote>
+        </SectionEarningsContent>
+        <ShareContainer>
+          <ShareContainerContent>
+            <ImageContainer>
+              <img src={gift} alt="" />
+            </ImageContainer>
+            <Share>
+              <ShareContainerHeading>Share & Earn</ShareContainerHeading>
+              <ShareContainerText>
+                Refer friends and get $ for each referral
+              </ShareContainerText>
+              <ShareContainerTextSecondary>
+                Copy shareable link
+              </ShareContainerTextSecondary>
+              <CopyToClipboard text="sksksksksks" />
+              <BadgeContainer>
+                <Badge src={appstorebadge} alt="" />
+                <Badge src={playstorebadge} alt="" />
+              </BadgeContainer>
+            </Share>
+          </ShareContainerContent>
+        </ShareContainer>
+      </SectionEarnings>
+      <SectionPromotions>
+        <SectionPromotionsContent>
+          <SectionPromotionsItem>
+            <SectionPromotionsItemImage
+              src={productlogo}
+            ></SectionPromotionsItemImage>
+            <SectionPromotionsItemContent>
+              <SectionPromotionsItemContentHeading>
+                Drilla
+              </SectionPromotionsItemContentHeading>
+              <SectionPromotionsItemContentAbout>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionPromotionsItemContentAbout>
+              <SectionPromotionsItemContentPromotion>
+                Follow this account win $$
+              </SectionPromotionsItemContentPromotion>
+              <SectionPromotionsItemContentLink
+                href="drilla.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></SectionPromotionsItemContentLink>
+            </SectionPromotionsItemContent>
+          </SectionPromotionsItem>
+          <SectionPromotionsItem>
+            <SectionPromotionsItemImage
+              src={youtubeMain}
+            ></SectionPromotionsItemImage>
+            <SectionPromotionsItemContent>
+              <SectionPromotionsItemContentHeading>
+                @tochistry
+              </SectionPromotionsItemContentHeading>
+              <SectionPromotionsItemContentAbout>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionPromotionsItemContentAbout>
+              <SectionPromotionsItemContentPromotion>
+                Follow this account win $$
+              </SectionPromotionsItemContentPromotion>
+              <SectionPromotionsItemContentLink
+                href="drilla.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></SectionPromotionsItemContentLink>
+            </SectionPromotionsItemContent>
+          </SectionPromotionsItem>
+          <SectionPromotionsItem>
+            <SectionPromotionsItemImage
+              src={instagramMain}
+            ></SectionPromotionsItemImage>
+            <SectionPromotionsItemContent>
+              <SectionPromotionsItemContentHeading>
+                @theblackesper
+              </SectionPromotionsItemContentHeading>
+              <SectionPromotionsItemContentAbout>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionPromotionsItemContentAbout>
+              <SectionPromotionsItemContentPromotion>
+                Follow this account win $$
+              </SectionPromotionsItemContentPromotion>
+              <SectionPromotionsItemContentLink
+                href="drilla.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></SectionPromotionsItemContentLink>
+            </SectionPromotionsItemContent>
+          </SectionPromotionsItem>
+          <SectionPromotionsItem>
+            <SectionPromotionsItemImage
+              src={twitterMain}
+            ></SectionPromotionsItemImage>
+            <SectionPromotionsItemContent>
+              <SectionPromotionsItemContentHeading>
+                @tochistry
+              </SectionPromotionsItemContentHeading>
+              <SectionPromotionsItemContentAbout>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionPromotionsItemContentAbout>
+              <SectionPromotionsItemContentPromotion>
+                Follow this account win $$
+              </SectionPromotionsItemContentPromotion>
+              <SectionPromotionsItemContentLink
+                href="drilla.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></SectionPromotionsItemContentLink>
+            </SectionPromotionsItemContent>
+          </SectionPromotionsItem>
+        </SectionPromotionsContent>
+        <SectionPromotionsLink to="/dashboard/promotions">
+          go to promotions &#8594;
+        </SectionPromotionsLink>
+      </SectionPromotions>
+      <SectionBounties>
+        <SectionBountiesContent>
+          <SectionBountiesItem>
+            <SectionBountiesItemSideFront className="side--front">
+              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
+              <SectionBountiesItemImage
+                src={productlogo}
+              ></SectionBountiesItemImage>
+              <SectionBountiesItemText>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionBountiesItemText>
+            </SectionBountiesItemSideFront>
+            <SectionBountiesItemSideBack className="side--back">
+              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
+              <SectionBountiesItemImage
+                src={productlogo}
+              ></SectionBountiesItemImage>
+              <SectionBountiesItemText>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionBountiesItemText>
+            </SectionBountiesItemSideBack>
+          </SectionBountiesItem>
+          <SectionBountiesItem>
+            <SectionBountiesItemSideFront className="side--front">
+              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
+              <SectionBountiesItemImage
+                src={productlogo}
+              ></SectionBountiesItemImage>
+              <SectionBountiesItemText>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionBountiesItemText>
+            </SectionBountiesItemSideFront>
+            <SectionBountiesItemSideBack className="side--back">
+              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
+              <SectionBountiesItemImage
+                src={productlogo}
+              ></SectionBountiesItemImage>
+              <SectionBountiesItemText>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionBountiesItemText>
+            </SectionBountiesItemSideBack>
+          </SectionBountiesItem>
+          <SectionBountiesItem>
+            <SectionBountiesItemSideFront className="side--front">
+              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
+              <SectionBountiesItemImage
+                src={productlogo}
+              ></SectionBountiesItemImage>
+              <SectionBountiesItemText>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionBountiesItemText>
+            </SectionBountiesItemSideFront>
+            <SectionBountiesItemSideBack className="side--back">
+              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
+              <SectionBountiesItemImage
+                src={productlogo}
+              ></SectionBountiesItemImage>
+              <SectionBountiesItemText>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Numquam quos, repellat, omnis voluptatum officiis dolorum
+                ducimus.
+              </SectionBountiesItemText>
+            </SectionBountiesItemSideBack>
+          </SectionBountiesItem>
+        </SectionBountiesContent>
+        <SectionBountiesLink to="/dashboard/bounties">
+          go to bounties &#8594;
+        </SectionBountiesLink>
+      </SectionBounties>
+    </OverviewPageWrapper>
+  );
+};
 
 const OverviewPageWrapper = styled.div`
   min-height: 100vh;
@@ -19,7 +322,7 @@ const OverviewPageWrapper = styled.div`
 
 const Section = styled.section`
   min-height: 30rem;
-  padding: 0 4rem;
+  padding: 0 3rem;
   border-bottom: 1px dashed rgba(73, 94, 75, 0.2);
 `;
 
@@ -30,12 +333,30 @@ const SectionSpotlight = styled(Section)`
 `;
 
 const SectionSpotlightCarousel = styled.div`
-  flex: 0 0 40%;
+  flex: 1;
+  max-width: 40rem;
+`;
+
+const StyledSlider = styled(Slider)`
+  width: 100%;
+`;
+
+const SliderItem = styled.div`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+`;
+
+const SliderItemImage = styled.img`
+  display: inline-block;
+  width: 40rem;
+  height: 27rem;
 `;
 
 const SectionSpotlightContent = styled.div`
-  flex: 0 0 50%;
+  flex: 0 0 45%;
   display: flex;
+  background: paleturquoise;
 `;
 
 const SectionSpotlightContentLogoBox = styled.div`
@@ -323,257 +644,5 @@ const SectionBountiesItemText = styled.p`
 const SectionBountiesLink = styled(InAppNavigation)`
   margin-top: 2rem;
 `;
-
-const OverviewPage = () => {
-  return (
-    <OverviewPageWrapper>
-      <SectionSpotlight>
-        <SectionSpotlightContent>
-          <SectionSpotlightContentLogoBox>
-            <SectionSpotlightContentLogo src={productlogo} />
-          </SectionSpotlightContentLogoBox>
-          <SectionSpotlightContentText>
-            <SectionSpotlightContentTextHeading>
-              Drilla
-            </SectionSpotlightContentTextHeading>
-            <SectionSpotlightContentTextSecondary>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
-              quos, repellat, omnis voluptatum officiis dolorum ducimus.
-            </SectionSpotlightContentTextSecondary>
-            <SectionSpotlightContentTextTags>
-              <SectionSpotlightContentTextTagsItem>
-                crypto
-              </SectionSpotlightContentTextTagsItem>
-              <SectionSpotlightContentTextTagsItem>
-                fintech
-              </SectionSpotlightContentTextTagsItem>
-              <SectionSpotlightContentTextTagsItem>
-                tech
-              </SectionSpotlightContentTextTagsItem>
-            </SectionSpotlightContentTextTags>
-            <SectionSpotlightContentTextLink to="/dashboard/product-of-the-week">
-              learn more &#8594;
-            </SectionSpotlightContentTextLink>
-          </SectionSpotlightContentText>
-        </SectionSpotlightContent>
-        <SectionSpotlightCarousel>
-          The carousel probably lives here
-        </SectionSpotlightCarousel>
-      </SectionSpotlight>
-      <SectionEarnings>
-        <SectionEarningsContent>
-          <SectionEarningsHeading>Your earnings:</SectionEarningsHeading>
-          <SectionEarningsEarning>&#8358;3,000</SectionEarningsEarning>
-          <SectionEarningsLink to="/dashboard/earnings">
-            go to earnings &#8594;
-          </SectionEarningsLink>
-          <SectionEarningsNote>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid
-            dignissimos exercitationem cumque dolorum.
-          </SectionEarningsNote>
-        </SectionEarningsContent>
-        <ShareContainer>
-          <ShareContainerContent>
-            <ImageContainer>
-              <img src={gift} alt="" />
-            </ImageContainer>
-            <Share>
-              <ShareContainerHeading>Share & Earn</ShareContainerHeading>
-              <ShareContainerText>
-                Refer friends and get $ for each referral
-              </ShareContainerText>
-              <ShareContainerTextSecondary>
-                Copy shareable link
-              </ShareContainerTextSecondary>
-              <CopyToClipboard text="sksksksksks" />
-              <BadgeContainer>
-                <Badge src={appstorebadge} alt="" />
-                <Badge src={playstorebadge} alt="" />
-              </BadgeContainer>
-            </Share>
-          </ShareContainerContent>
-        </ShareContainer>
-      </SectionEarnings>
-      <SectionPromotions>
-        <SectionPromotionsContent>
-          <SectionPromotionsItem>
-            <SectionPromotionsItemImage
-              src={productlogo}
-            ></SectionPromotionsItemImage>
-            <SectionPromotionsItemContent>
-              <SectionPromotionsItemContentHeading>
-                Drilla
-              </SectionPromotionsItemContentHeading>
-              <SectionPromotionsItemContentAbout>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionPromotionsItemContentAbout>
-              <SectionPromotionsItemContentPromotion>
-                Follow this account win $$
-              </SectionPromotionsItemContentPromotion>
-              <SectionPromotionsItemContentLink
-                href="drilla.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              ></SectionPromotionsItemContentLink>
-            </SectionPromotionsItemContent>
-          </SectionPromotionsItem>
-          <SectionPromotionsItem>
-            <SectionPromotionsItemImage
-              src={youtubeMain}
-            ></SectionPromotionsItemImage>
-            <SectionPromotionsItemContent>
-              <SectionPromotionsItemContentHeading>
-                @tochistry
-              </SectionPromotionsItemContentHeading>
-              <SectionPromotionsItemContentAbout>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionPromotionsItemContentAbout>
-              <SectionPromotionsItemContentPromotion>
-                Follow this account win $$
-              </SectionPromotionsItemContentPromotion>
-              <SectionPromotionsItemContentLink
-                href="drilla.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              ></SectionPromotionsItemContentLink>
-            </SectionPromotionsItemContent>
-          </SectionPromotionsItem>
-          <SectionPromotionsItem>
-            <SectionPromotionsItemImage
-              src={instagramMain}
-            ></SectionPromotionsItemImage>
-            <SectionPromotionsItemContent>
-              <SectionPromotionsItemContentHeading>
-                @theblackesper
-              </SectionPromotionsItemContentHeading>
-              <SectionPromotionsItemContentAbout>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionPromotionsItemContentAbout>
-              <SectionPromotionsItemContentPromotion>
-                Follow this account win $$
-              </SectionPromotionsItemContentPromotion>
-              <SectionPromotionsItemContentLink
-                href="drilla.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              ></SectionPromotionsItemContentLink>
-            </SectionPromotionsItemContent>
-          </SectionPromotionsItem>
-          <SectionPromotionsItem>
-            <SectionPromotionsItemImage
-              src={twitterMain}
-            ></SectionPromotionsItemImage>
-            <SectionPromotionsItemContent>
-              <SectionPromotionsItemContentHeading>
-                @tochistry
-              </SectionPromotionsItemContentHeading>
-              <SectionPromotionsItemContentAbout>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionPromotionsItemContentAbout>
-              <SectionPromotionsItemContentPromotion>
-                Follow this account win $$
-              </SectionPromotionsItemContentPromotion>
-              <SectionPromotionsItemContentLink
-                href="drilla.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              ></SectionPromotionsItemContentLink>
-            </SectionPromotionsItemContent>
-          </SectionPromotionsItem>
-        </SectionPromotionsContent>
-        <SectionPromotionsLink to="/dashboard/promotions">
-          go to promotions &#8594;
-        </SectionPromotionsLink>
-      </SectionPromotions>
-      <SectionBounties>
-        <SectionBountiesContent>
-          <SectionBountiesItem>
-            <SectionBountiesItemSideFront className="side--front">
-              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
-              <SectionBountiesItemImage
-                src={productlogo}
-              ></SectionBountiesItemImage>
-              <SectionBountiesItemText>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionBountiesItemText>
-            </SectionBountiesItemSideFront>
-            <SectionBountiesItemSideBack className="side--back">
-              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
-              <SectionBountiesItemImage
-                src={productlogo}
-              ></SectionBountiesItemImage>
-              <SectionBountiesItemText>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionBountiesItemText>
-            </SectionBountiesItemSideBack>
-          </SectionBountiesItem>
-          <SectionBountiesItem>
-            <SectionBountiesItemSideFront className="side--front">
-              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
-              <SectionBountiesItemImage
-                src={productlogo}
-              ></SectionBountiesItemImage>
-              <SectionBountiesItemText>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionBountiesItemText>
-            </SectionBountiesItemSideFront>
-            <SectionBountiesItemSideBack className="side--back">
-              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
-              <SectionBountiesItemImage
-                src={productlogo}
-              ></SectionBountiesItemImage>
-              <SectionBountiesItemText>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionBountiesItemText>
-            </SectionBountiesItemSideBack>
-          </SectionBountiesItem>
-          <SectionBountiesItem>
-            <SectionBountiesItemSideFront className="side--front">
-              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
-              <SectionBountiesItemImage
-                src={productlogo}
-              ></SectionBountiesItemImage>
-              <SectionBountiesItemText>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionBountiesItemText>
-            </SectionBountiesItemSideFront>
-            <SectionBountiesItemSideBack className="side--back">
-              <SectionBountiesItemHeader>Drilla</SectionBountiesItemHeader>
-              <SectionBountiesItemImage
-                src={productlogo}
-              ></SectionBountiesItemImage>
-              <SectionBountiesItemText>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Numquam quos, repellat, omnis voluptatum officiis dolorum
-                ducimus.
-              </SectionBountiesItemText>
-            </SectionBountiesItemSideBack>
-          </SectionBountiesItem>
-        </SectionBountiesContent>
-        <SectionBountiesLink to="/dashboard/bounties">
-          go to bounties &#8594;
-        </SectionBountiesLink>
-      </SectionBounties>
-    </OverviewPageWrapper>
-  );
-};
 
 export default OverviewPage;
