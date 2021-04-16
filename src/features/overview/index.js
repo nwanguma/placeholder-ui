@@ -134,6 +134,8 @@ const OverviewPage = () => {
           </ShareContainerContent>
         </ShareContainer>
       </SectionEarnings>
+      <SectionJobs>this is the jobs section</SectionJobs>
+      <SectionChallenges>this is the challenges section</SectionChallenges>
       <SectionPromotions>
         <SectionPromotionsContent>
           <SectionPromotionsItem>
@@ -530,6 +532,16 @@ const Badge = styled.img`
   &:first-child {
     margin-right: 1rem;
   }
+`;
+
+const SectionJobs = styled(Section)`
+  padding-top: 3rem;
+  height: 42rem;
+`;
+
+const SectionChallenges = styled(Section)`
+  padding-top: 3rem;
+  height: 42rem;
 `;
 
 const SectionPromotions = styled(Section)`
